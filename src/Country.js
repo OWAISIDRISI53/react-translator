@@ -1,7 +1,8 @@
 export const countries = [
+    { code: "hi", name: "Hindi" },
+    { code: "urd", name: "Urdu" },
     { code: "am-ET", name: "Amharic" },
     // { code: "ar-SA", name: "Arabic" },
-    { code: "hi", name: "Hindi" },
     { code: "ar", name: "Arabic" },
     { code: "be", name: "Bielarus" },
     { code: "bem", name: "Bemba" },
