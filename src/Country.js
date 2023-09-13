@@ -34,7 +34,7 @@ export const countries = [
     { code: "gu", name: "Gujarati" },
     { code: "ha", name: "Hausa" },
     { code: "he", name: "Hebrew" },
-    { code: "hi", name: "Hindi" },
+    // { code: "hi", name: "Hindi" },
     { code: "hr", name: "Croatian" },
     { code: "hu", name: "Hungarian" },
     { code: "id", name: "Indonesian" },

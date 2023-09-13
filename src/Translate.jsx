@@ -6,7 +6,7 @@ import { countries } from "./Country";
 const Translate = () => {
   const [text, setText] = useState("hi");
   const [lang, setLang] = useState("hi");
-
+  const [speech, setSpeech] = useState(true);
   const [translatedText, setTranslatedText] = useState("");
 
   // useEffect(() => {
@@ -45,6 +45,35 @@ const Translate = () => {
     setLang(e.target.value);
   };
 
+  const speechHandler = (e) => {
+    console.log(e);
+    window.SpeechRecognition = window.webkitSpeechRecognition;
+    const recognition = new window.SpeechRecognition();
+
+    recognition.interimResults = true;
+    recognition.lang = "en-IN";
+    navigator.permissions.query({
+      name: "microphone",
+    });
+
+    recognition.addEventListener("result", (e) => {
+      console.log(e.results);
+      const transcript = Array.from(e.results).map((result) =>
+        result[0].map((result) => result.transcript).join("")
+      );
+      console.log(transcript);
+      setText(transcript);
+    });
+
+    recognition.onerror = function (event) {
+      console.log(event.error, event);
+    };
+
+    if (speech) {
+      recognition.start();
+    }
+  };
+
   return (
     <div className="container w-3/4">
       <div className="wrapper">
@@ -71,7 +100,11 @@ const Translate = () => {
         <ul className="controls">
           <li className="row from">
             <div className="icons">
-              <i id="from" className="fas fa-volume-up"></i>
+              <i
+                onClick={speechHandler}
+                id="from"
+                className="fas fa-volume-up"
+              ></i>
               <i id="from" className="fas fa-copy"></i>
             </div>
             <select onChange={changeHandler}>
