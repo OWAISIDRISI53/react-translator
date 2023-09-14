@@ -58,8 +58,10 @@ const Translate = () => {
 
     recognition.addEventListener("result", (e) => {
       console.log(e.results);
-      const transcript = Array.from(e.results).map((result) =>
-        result.map((result) => result.transcript)
+      const transcript = Array.from(e.results[0]).map((result) => result.transcript);
+console.log(transcript);
+setText(transcript);
+
       console.log(transcript);
       setText(transcript);
     });
